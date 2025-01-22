@@ -1,2 +1,3 @@
 # GuardianShip
-Игра реализованная при помощи PyGame, на Python.
+---
+![Game Window](Git/GameWindow.jpg)
