@@ -17,24 +17,24 @@
 
 **Собрав все идеи мы начали подбирать спрайты для игры.**
 *Игровая модель и пуля*
-![hero](sprite/hero/hero.png)
-![shot](sprite/hero/shot.png)
+![hero](Game/sprite/hero/hero.png)
+![shot](Game/sprite/hero/shot.png)
 
 *Модели врагов*
-![enemy_1](sprite/enemy/enemy_1.png)
-![enemy_2](sprite/enemy/enemy_2.png)
-![enemy_3](sprite/enemy/enemy_3.png)
-![enemy_4](sprite/enemy/enemy_4.png)
-![enemy_5](sprite/enemy/enemy_5.png)
+![enemy_1](Game/sprite/enemy/enemy_1.png)
+![enemy_2](Game/sprite/enemy/enemy_2.png)
+![enemy_3](Game/sprite/enemy/enemy_3.png)
+![enemy_4](Game/sprite/enemy/enemy_4.png)
+![enemy_5](Game/sprite/enemy/enemy_5.png)
 
 *Спрайты здоровья*
-![heart](sprite/hp/hearts.png)
-![heart_2](sprite/hp/hearts-1.png)
-![heart_3](sprite/hp/hearts-2.png)
+![heart](Game/sprite/hp/hearts.png)
+![heart_2](Game/sprite/hp/hearts-1.png)
+![heart_3](Game/sprite/hp/hearts-2.png)
 
 *Фоны для игры*
-![background_game](background/background.jpg)
-![background_start](background/start-background.jpg)
+![background_game](Game/background/background.jpg)
+![background_start](Game/background/start-background.jpg)
 
 *Также был добавлен шрифт Iceberg-Regular*
 ![font](Git/font.jpg)
