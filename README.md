@@ -7,3 +7,43 @@
 ![Детектив уворачивается](Git/ProjectFirst.jpg)
 
 ---
+**Мы начали обдумывать идеи и подбирали механики, которые будем реализовывать:**
+- Добавление механики выстрела.
+- Добавление механики здоровья.
+- Изменение подсчёта очков.
+- Доработка базовой механики.
+- Добавление паузы.
+- Добавление звуковых эффектов и музыки.
+
+**Собрав все идеи мы начали подбирать спрайты для игры.**
+*Игровая модель и пуля*
+![hero](sprite/hero/hero.png)
+![shot](sprite/hero/shot.png)
+
+*Модели врагов*
+![enemy_1](sprite/enemy/enemy_1.png)
+![enemy_2](sprite/enemy/enemy_2.png)
+![enemy_3](sprite/enemy/enemy_3.png)
+![enemy_4](sprite/enemy/enemy_4.png)
+![enemy_5](sprite/enemy/enemy_5.png)
+
+*Спрайты здоровья*
+![heart](sprite/hp/hearts.png)
+![heart_2](sprite/hp/hearts-1.png)
+![heart_3](sprite/hp/hearts-2.png)
+
+*Фоны для игры*
+![background_game](background/background.jpg)
+![background_start](background/start-background.jpg)
+
+*Также был добавлен шрифт Iceberg-Regular*
+![font](Git/font.jpg)
+
+*Добавлены звуковые эффекты:*
+- Взрыва
+- Выстрела
+- Смерти
+- Потери жизни
+- А также, фоновая музыка.
+
+---
