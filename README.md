@@ -1,4 +1,4 @@
-# GuardianShip
+# GuardianShip v1.0
 ---
 *В начале стояла задача повторить проект с данного [сайта](https://thecode.media/sozdayom-interfeys-igry-na-python-s-pomoschyu-pygame/).*
 ![Детектив уворачивается](Git/ProjectFirst.jpg)
