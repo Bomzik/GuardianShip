@@ -18,17 +18,22 @@ clock = pygame.time.Clock()
 back = pygame.image.load('background/background.jpg').convert()
 back_start = pygame.image.load('background/start-background.jpg').convert()
 hero = pygame.image.load('sprite/hero/hero.png').convert_alpha()
-hero_2 = pygame.image.load('sprite/hero/hero-2.png').convert_alpha()
+hero_2 = pygame.image.load('sprite/hero-2/hero-2.png').convert_alpha()
 enemy_1 = pygame.image.load('sprite/enemy/enemy_1.png').convert_alpha()
 enemy_2 = pygame.image.load('sprite/enemy/enemy_2.png').convert_alpha()
 enemy_3 = pygame.image.load('sprite/enemy/enemy_3.png').convert_alpha()
 enemy_4 = pygame.image.load('sprite/enemy/enemy_4.png').convert_alpha()
 enemy_5 = pygame.image.load('sprite/enemy/enemy_5.png').convert_alpha()
 shot = pygame.image.load('sprite/hero/shot.png').convert_alpha()
-shot_2 = pygame.image.load('sprite/hero/shot-2.png').convert_alpha()
+shot_2 = pygame.image.load('sprite/hero-2/shot-2.png').convert_alpha()
 heart = pygame.image.load('sprite/hp/hearts.png').convert_alpha()
 heart_1 = pygame.image.load('sprite/hp/hearts-1.png').convert_alpha()
 heart_2 = pygame.image.load('sprite/hp/hearts-2.png').convert_alpha()
+death = pygame.image.load('sprite/hp/death.png').convert_alpha()
+heart2 = pygame.image.load('sprite/hp-2/hearts2.png').convert_alpha()
+heart2_1 = pygame.image.load('sprite/hp-2/hearts2-1.png').convert_alpha()
+heart2_2 = pygame.image.load('sprite/hp-2/hearts2-2.png').convert_alpha()
+death2 = pygame.image.load('sprite/hp-2/death2.png').convert_alpha()
 
 pygame.display.set_caption('GuardianShip')
 
@@ -40,13 +45,21 @@ text_font = pygame.font.Font('font/Iceberg-Regular.ttf', 40)
 text_surface = text_font.render('GuardianShip', False, '#CCCCFF')
 text_name_rect = text_surface.get_rect(center=(500, 550))
 
+text_font_two = pygame.font.Font('font/Iceberg-Regular.ttf', 40)
+text_surface_two = text_font.render('2-Players', False, '#CCCCFF')
+text_name_two_rect = text_surface.get_rect(center=(540, 550))
+
 text_font_name_game = pygame.font.Font('font/Iceberg-Regular.ttf', 150)
 text_newgame_1 = text_font_name_game.render('GuardianShip', False, '#CCCCFF')
 text_newgame_rect1 = text_newgame_1.get_rect(center=(500, 250))
 
 text_font_new_game = pygame.font.Font('font/Iceberg-Regular.ttf', 40)
-text_newgame_2 = text_font_new_game.render('Press "Space" for start', False, '#CD00CD')
+text_newgame_2 = text_font_new_game.render('Single Game - 1', False, '#CD00CD')
 text_newgame_rect2 = text_newgame_2.get_rect(center=(500, 350))
+
+text_font_two_game = pygame.font.Font('font/Iceberg-Regular.ttf', 40)
+text_twogame = text_font_two_game.render('Two Players Game - 2', False, '#CD00CD')
+text_twogame_rect = text_twogame.get_rect(center=(500, 400))
 
 pause_text_font = pygame.font.Font('font/Iceberg-Regular.ttf', 200)
 pause_text = pause_text_font.render('Pause', False, 'White')
@@ -63,9 +76,10 @@ def display_score(score):
 
 
 def reset_game():
-    global hero_rect, hero_2_rect, enemy_1_rect, enemy_2_rect, enemy_3_rect, enemy_4_rect, enemy_5_rect, shot_rect, shot_2_rect, heart_rect, heart_1_rect, heart_2_rect, enemy_2_flag, enemy_3_flag, enemy_4_flag, enemy_5_flag, shot_flag, shot_2_flag, game, y_pos, hp, speed_enemy, speed_hero, speed_shot, final_score, kill_sound, hp_loss, death_sound, shoot_sound, channel_0, channel_1, channel_2, channel_3
+    global hero_rect, hero_2_rect, enemy_1_rect, enemy_2_rect, enemy_3_rect, enemy_4_rect, enemy_5_rect, shot_rect, shot_2_rect, heart_rect, heart_1_rect, heart_2_rect, death_rect, heart2_rect, heart2_1_rect, heart2_2_rect, death2_rect, enemy_2_flag, enemy_3_flag, enemy_4_flag, enemy_5_flag, shot_flag, shot_2_flag, game, y_pos, hp, hp2, speed_enemy, speed_hero, speed_shot, final_score, kill_sound, hp_loss, death_sound, shoot_sound, channel_0, channel_1, channel_2, channel_3
 
     hp = 3
+    hp2 = 3
     speed_enemy = 3
     speed_hero = 8
     speed_shot = 20
@@ -97,8 +111,13 @@ def reset_game():
     enemy_4_rect = enemy_4.get_rect(center=(enemy_4_x_pos, enemy_4_y_pos))
     enemy_5_rect = enemy_5.get_rect(center=(enemy_5_x_pos, enemy_5_y_pos))
     heart_rect = heart.get_rect(bottomleft=(50, 575))
-    heart_1_rect = heart.get_rect(bottomleft=(50, 575))
-    heart_2_rect = heart.get_rect(bottomleft=(50, 575))
+    heart_1_rect = heart_1.get_rect(bottomleft=(50, 575))
+    heart_2_rect = heart_2.get_rect(bottomleft=(50, 575))
+    death_rect = death.get_rect(bottomleft=(50, 575))
+    heart2_rect = heart2.get_rect(bottomright=(950, 575))
+    heart2_1_rect = heart2_1.get_rect(bottomright=(950, 575))
+    heart2_2_rect = heart2_2.get_rect(bottomright=(950, 575))
+    death2_rect = death2.get_rect(bottomright=(950, 575))
     shot_rect = shot.get_rect(center=(120, hero_y_pos))
     shot_2_rect = shot_2.get_rect(center=(835, hero_2_y_pos))
 
@@ -131,11 +150,11 @@ while True:
             pygame.quit()
             exit()
 
-        if not game and event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
+        if not game and event.type == pygame.KEYDOWN and event.key == pygame.K_1:
             reset_game()
             game = True
 
-        if not two_player and event.type == pygame.KEYDOWN and event.key == pygame.K_KP_ENTER:
+        if not two_player and event.type == pygame.KEYDOWN and event.key == pygame.K_2:
             reset_game()
             two_player = True
 
@@ -233,7 +252,7 @@ while True:
             shot_flag = False
 
         screen.blit(back, (0, 0))
-        back.blit(text_surface, text_name_rect)
+        screen.blit(text_surface, text_name_rect)
         screen.blit(hero, hero_rect)
         screen.blit(enemy_1, enemy_1_rect)
         screen.blit(enemy_2, enemy_2_rect)
@@ -371,6 +390,7 @@ while True:
 
             shot_rect.centerx = hero_rect.right
             shot_flag = False
+            hp2 -= 1
 
         if shot_2_rect.colliderect(hero_rect):
 
@@ -378,15 +398,65 @@ while True:
 
             shot_2_rect.centerx = hero_2_rect.left
             shot_2_flag = False
+            hp -= 1
+
+        if shot_rect.colliderect(shot_2_rect) and shot_2_rect.colliderect(shot_rect):
+            shot_rect.centerx = hero_rect.right
+            shot_2_rect.centerx = hero_2_rect.left
+            shot_flag = False
+            shot_2_flag = False
 
         screen.blit(back, (0, 0))
-        back.blit(text_surface, text_name_rect)
+        screen.blit(text_surface_two, text_name_two_rect)
         screen.blit(hero, hero_rect)
         screen.blit(hero_2, hero_2_rect)
         if shot_flag:
             screen.blit(shot, shot_rect)
         if shot_2_flag:
             screen.blit(shot_2, shot_2_rect)
+
+        if hp == 3:
+            screen.blit(heart, heart_rect)
+        elif hp == 2:
+            screen.blit(heart_1, heart_1_rect)
+        elif hp == 1:
+            screen.blit(heart_2, heart_2_rect)
+
+        if hp2 == 3:
+            screen.blit(heart2, heart2_rect)
+        elif hp2 == 2:
+            screen.blit(heart2_1, heart2_1_rect)
+        elif hp2 == 1:
+            screen.blit(heart2_2, heart2_2_rect)
+
+        if hp == 0:
+            screen.blit(death, death_rect)
+            channel_1.play(death_sound)
+            pygame.mixer.music.pause()
+            text_ts_text = text_ts_font.render(f'Player 2 Win', False, 'White')
+            text_ts_rect = text_ts_text.get_rect(center=(500, 300))
+
+            screen.blit(text_ts_text, text_ts_rect)
+
+            pygame.display.flip()
+
+            time.sleep(3)
+
+            two_player = False
+        elif hp2 == 0:
+            screen.blit(death2, death2_rect)
+            channel_1.play(death_sound)
+            pygame.mixer.music.pause()
+            text_ts_text = text_ts_font.render(f'Player 1 Win', False, 'White')
+            text_ts_rect = text_ts_text.get_rect(center=(500, 300))
+
+            screen.blit(text_ts_text, text_ts_rect)
+
+            pygame.display.flip()
+
+            time.sleep(3)
+
+            two_player = False
 
     elif (game and pause) or (two_player and pause):
         screen.blit(pause_text, pause_text_rect)
@@ -395,6 +465,7 @@ while True:
         screen.blit(back_start, (0, 0))
         screen.blit(text_newgame_1, text_newgame_rect1)
         screen.blit(text_newgame_2, text_newgame_rect2)
+        screen.blit(text_twogame, text_twogame_rect)
         pygame.mixer.music.unpause()
 
     pygame.display.update()
