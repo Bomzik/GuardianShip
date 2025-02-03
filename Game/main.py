@@ -76,7 +76,7 @@ def display_score(score):
 
 
 def reset_game():
-    global hero_rect, hero_2_rect, enemy_1_rect, enemy_2_rect, enemy_3_rect, enemy_4_rect, enemy_5_rect, shot_rect, shot_2_rect, heart_rect, heart_1_rect, heart_2_rect, death_rect, heart2_rect, heart2_1_rect, heart2_2_rect, death2_rect, enemy_2_flag, enemy_3_flag, enemy_4_flag, enemy_5_flag, shot_flag, shot_2_flag, game, y_pos, hp, hp2, speed_enemy, speed_hero, speed_shot, final_score, kill_sound, hp_loss, death_sound, shoot_sound, channel_0, channel_1, channel_2, channel_3
+    global hero_rect, hero_2_rect, enemy_1_rect, enemy_2_rect, enemy_3_rect, enemy_4_rect, enemy_5_rect, shot_rect, shot_2_rect, heart_rect, heart_1_rect, heart_2_rect, death_rect, heart2_rect, heart2_1_rect, heart2_2_rect, death2_rect, enemy_2_flag, enemy_3_flag, enemy_4_flag, enemy_5_flag, shot_flag, shot_2_flag, game, y_pos, hp, hp2, speed_enemy, speed_hero, speed_shot, final_score, kill_sound, hp_loss, death_sound, win_sound, shoot_sound, shoot2_sound, channel_0, channel_1, channel_2, channel_3
 
     hp = 3
     hp2 = 3
@@ -134,10 +134,12 @@ def reset_game():
     kill_sound = pygame.mixer.Sound('sound/death-ship.ogg')
     channel_0 = pygame.mixer.Channel(0)
     death_sound = pygame.mixer.Sound('sound/death-sound.ogg')
+    win_sound = pygame.mixer.Sound('sound/win-sound.ogg')
     channel_1 = pygame.mixer.Channel(1)
     hp_loss = pygame.mixer.Sound('sound/healt-loss.ogg')
     channel_2 = pygame.mixer.Channel(2)
     shoot_sound = pygame.mixer.Sound('sound/shoot-sound.ogg')
+    shoot2_sound = pygame.mixer.Sound('sound/shoot2-sound.ogg')
     channel_3 = pygame.mixer.Channel(3)
 
 
@@ -374,7 +376,7 @@ while True:
 
         if keys[pygame.K_LEFT]:
             if not shot_2_flag:
-                channel_3.play(shoot_sound)
+                channel_2.play(shoot2_sound)
                 shot_2_rect.centery = hero_2_rect.centery
             shot_2_flag = True
 
@@ -431,7 +433,7 @@ while True:
 
         if hp == 0:
             screen.blit(death, death_rect)
-            channel_1.play(death_sound)
+            channel_1.play(win_sound)
             pygame.mixer.music.pause()
             text_ts_text = text_ts_font.render(f'Player 2 Win', False, 'White')
             text_ts_rect = text_ts_text.get_rect(center=(500, 300))
@@ -445,7 +447,7 @@ while True:
             two_player = False
         elif hp2 == 0:
             screen.blit(death2, death2_rect)
-            channel_1.play(death_sound)
+            channel_1.play(win_sound)
             pygame.mixer.music.pause()
             text_ts_text = text_ts_font.render(f'Player 1 Win', False, 'White')
             text_ts_rect = text_ts_text.get_rect(center=(500, 300))
